@@ -40,5 +40,35 @@ public class TaskData {
        return unionSet;
     }
 
-    
+    public Set<Task> getIntersection(Set<Task> task1, Set<Task> task2) {
+        Set<Task> copyTask1 = new HashSet<>(task1);
+        copyTask1.retainAll(task2) ;
+        return copyTask1;
+    }
+
+
+    public Set<Task> getDifferences(Set<Task> task1, Set<Task> task2) {
+        task1.removeAll(task2);
+        return task1;
+    }
+
+    public Set<Task> getUnassignedTasks() {
+        return unassignedTasks;
+    }
+
+    public Set<Task> getMultipleAssignedTasks() {
+        Set<Task> allTasks = getUnion(annsTasks, bobsTasks, carolsTasks);
+        Set<Task> duplicate = new HashSet<>();
+        for (Task task : allTasks) {
+            if (    (annsTasks.contains(task) &&bobsTasks.contains(task)) ||
+                    (annsTasks.contains(task) && carolsTasks.contains(task)) ||
+                    (bobsTasks.contains(task) && carolsTasks.contains(task))
+            ) {
+                duplicate.add(task);
+            }
+        }
+        return duplicate;
+    }
+
+
 }
