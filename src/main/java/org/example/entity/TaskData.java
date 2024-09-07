@@ -40,9 +40,5 @@ public class TaskData {
        return unionSet;
     }
 
-    public Set<Task> getIntersect(Set<Task> task1, Set<Task> task2) {
-        Set<Task> copyTask1 = new HashSet<>(task1);
-        copyTask1.retainAll(task2);
-        return copyTask1;
-    }
+    
 }
