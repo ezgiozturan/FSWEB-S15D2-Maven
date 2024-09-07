@@ -28,10 +28,17 @@ public class TaskData {
                 return unassignedTasks;
             default:
                 return new HashSet<>();
-                
+
         }
-
-
-
     }
+
+    public Set<Task> getUnion(Set<Task>...tasks) {
+        Set<Task> unionSet = new HashSet<>();
+        for (Set<Task> task : tasks) {
+            unionSet.addAll(task);
+        }
+       return unionSet;
+    }
+
+    
 }
